@@ -19,7 +19,7 @@ using namespace std;
 
 float increase_velocity(float velocity);
 float no_accidents(float velocity, float distance);
-float random_decrease(float velocity);
+float random_decrease(float velocity, float probability);
 float circular_move(float velocity);
 
 
