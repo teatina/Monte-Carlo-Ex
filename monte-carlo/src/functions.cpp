@@ -15,7 +15,7 @@ float increase_velocity(float velocity){
 }
 
 float no_accidents(float velocity, float distance){
-	
+	return std::min(velocity, distance - 1);	
 
 }
 
