@@ -17,9 +17,19 @@ class Car{
 		}
 
 		int random_decrease(float velocity, float probability){
-			int temp =  
-		
-	
+			if (velocity < 0) return velocity;
+			// generate a random number to move
+			int temp = uniform(engine);
+			// rejection scheme
+			while (temp >= probability){
+				temp = uniform(engine);
+			}
+			velocity -=1;
+			//if we put the other functions here
+			
+			
+
+
 		}	
 	
 
@@ -37,11 +47,6 @@ float increase_velocity(float velocity){
 
 float no_accidents(float velocity, float distance){
 	return std::min(velocity, distance - 1);	
-
-}
-
-
-float random_decrease(float velocity, float probability){
 
 }
 
