@@ -1,4 +1,4 @@
-# ex-2
+# Monte-Carlo-Ex
 
 
 Part 2 of Intro to Scientific and High-Performance computing exercises.
