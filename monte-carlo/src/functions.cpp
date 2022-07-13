@@ -6,8 +6,29 @@
 
 
 #include "functions.cpp"
-
 	
+
+
+class Car{
+	public: 
+		Car(): uniform(0,1){}
+		void start(int seed){
+			engine.seed(seed)
+		}
+
+		int random_decrease(float velocity, float probability){
+			int temp =  
+		
+	
+		}	
+	
+
+	private:
+	  std::uniform_int_distribution<int> uniform;
+	  std::mt19937 engine;
+}
+
+
 
 
 float increase_velocity(float velocity){
