@@ -25,6 +25,7 @@ class Car{
 				temp = uniform(engine);
 			}
 			velocity -=1;
+			//return velocity;
 			//if we put the other functions here
 			
 			
