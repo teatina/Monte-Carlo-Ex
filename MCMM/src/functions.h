@@ -11,6 +11,7 @@
 #include <iostream>
 #include <cmath>
 #include <algorithm>
+#include <random>
 
 using namespace std;
 
@@ -20,3 +21,4 @@ double system_energy_initialization(int *molecules_x, int *molecules_y,int count
 double total_energy(int *molecules_x, int *molecules_y, int count, double *energy);
 
 
+#endif
