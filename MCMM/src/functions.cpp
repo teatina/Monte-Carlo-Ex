@@ -5,18 +5,18 @@
 
 
 
-#include <functions.h>
+#include "functions.h"
 
 
 void initialization(int seed){
-	uniform(0, 1);
-	std::mt 19937 engine;
-	engine.seed(seed);
+	std::random_device rd;
+	std::mt19937 engine(rd());
+	std::uniform_int_distribution<int> uniform(1, 6);
 }
 
 int generate_position(){
-	std::uniform_int_distribution<int> uniform;
-	return uniform(engine);
+	//std::uniform_int_distribution<int> uniform;
+	return uniform(engine());
 }
 
 double system_energy_initialization(int *molecules_x, int *molecules_y, int count){
@@ -26,7 +26,7 @@ double system_energy_initialization(int *molecules_x, int *molecules_y, int coun
         double sum = 0;
         for(int i = 0; i < count; i++){
 		for (int j= i; j < count; j++){
-                	double distance = sqrt( pow ((molecules_x[i] - molecules_x[j]), 2) + pow(molecules_y[i] - molecules_y[j]), 2) );
+                	double distance = sqrt( pow ((molecules_x[i] - molecules_x[j]), 2) + pow( (molecules_y[i] - molecules_y[j]), 2) );
                 	sum += 4 * epsilon * ( pow(distance, 12 ) - pow(distance, 6) );
 		}
 	}
@@ -46,7 +46,7 @@ double total_energy(int *molecules_x, int *molecules_y, int count, double energy
 		int new_y = generate_position();
                 for (int j= i; j < count; j++){
 			molecule_sum = 0;
-                        double distance = sqrt( pow ((molecules_x[i] - molecules_x[j]), 2) + pow(molecules_y[i] - molecules_y[j]), 2) );
+                        double distance = sqrt( pow ((molecules_x[i] - molecules_x[j]), 2) + pow( (molecules_y[i] - molecules_y[j]), 2) );
                         molecule_sum += 4 * epsilon * ( pow(distance, 12 ) - pow(distance, 6) );
                 	double distance_rand = sqrt( pow( (new_x - molecules_x[j]), 2) + pow( (new_y - molecules_y[j]), 2) );
                         sum_rand_pos += 4 * epsilon * ( pow(distance_rand, 12 ) - pow(distance_rand, 6) );
