@@ -39,7 +39,8 @@ double system_energy_initialization(int *molecules_x, int *molecules_y,int count
 /// @param molecules_y the y position of the molecules
 /// @param count number of molecules
 /// @param energy the energy of the system at the previous step.
-double total_energy(int *molecules_x, int *molecules_y, int count, double energy);
+/// @param temperature the temperature of the system
+double total_energy(int *molecules_x, int *molecules_y, int count, double energy, float temperature);
 
 
 #endif
