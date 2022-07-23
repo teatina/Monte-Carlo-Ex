@@ -1,10 +1,10 @@
-/// @file functions.h
+/// @file main.cpp
 /// @author Tina Eghdam Zamiri
 /// @date July 23, 2022
 /// @brief Module for executing the functions for monte carlo molecular motion.
 
 
-#inculde <functions.h>
+#include <functions.h>
 
 
 
