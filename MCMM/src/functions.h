@@ -4,17 +4,19 @@
 /// @brief Module for writing the functions for monte carlo molecular motion.
 
 
-#pragma once
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
 
 
 #include <iostream>
 #include <cmath>
 #include <algorithm>
 
+using namespace std;
 
-
-double generate_position();
-
-double total_energy(double energy);
+void initialization();
+int generate_position();
+double system_energy_initialization(int *molecules_x, int *molecules_y,int count);
+double total_energy(int *molecules_x, int *molecules_y, int count, double *energy);
 
 
