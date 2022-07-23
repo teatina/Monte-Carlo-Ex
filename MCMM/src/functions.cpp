@@ -8,7 +8,7 @@
 #include "functions.h"
 
 
-void initialization(int seed){
+void initialization(){
 	std::random_device rd;
 	std::mt19937 engine(rd());
 	std::uniform_int_distribution<int> uniform(1, 6);
@@ -33,7 +33,7 @@ double system_energy_initialization(int *molecules_x, int *molecules_y, int coun
 	return sum;
 }
 
-double total_energy(int *molecules_x, int *molecules_y, int count, double energy, int temperature){
+double total_energy(int *molecules_x, int *molecules_y, int count, double energy, float temperature){
 	double sigma, epsilon;	
 	sigma = 120;
 	epsilon = 34e-11 ;
