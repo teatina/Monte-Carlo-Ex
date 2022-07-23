@@ -1,4 +1,6 @@
-# This is a modular code that implements a simple molecular dynamics model for a collection of molecules where their positions are randomly generated.
+# Simulating Molecular Motion Using Monte Carlo Techniques 
+
+This is a modular code that implements a simple molecular dynamics model for a collection of molecules where their positions are randomly generated.
 
 
 TODO:
