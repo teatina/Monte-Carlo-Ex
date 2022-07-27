@@ -10,13 +10,13 @@
 
 void initialization(){
 	std::random_device rd;
-	std::mt19937 engine(rd());
+	static  std::mt19937 engine(rd());
 	std::uniform_int_distribution<int> uniform(1, 6);
 }
 
 int generate_position(){
-	//std::uniform_int_distribution<int> uniform;
-	return uniform(engine());
+	std::uniform_int_distribution<int> uniform(1, 6);
+	return uniform(engine);
 }
 
 double system_energy_initialization(int *molecules_x, int *molecules_y, int count){
