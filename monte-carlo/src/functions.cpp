@@ -10,8 +10,20 @@
 
 
 class Car{
+	int num_pos;
+	int num_steps;
+	int num_cars;
+	float probability;
+	double seed;
 	public: 
-		Car(): uniform(0,1){}
+		Car(int numPos, int numSteps, int numCars, float Probability, double Seed): uniform(0,1), {
+			num_pos = numPos;
+			num_steps = numSteps;
+			num_cars = numCars;
+			probability = Probability;
+			seed = Seed;	
+		}
+
 		void start(int seed){
 			engine.seed(seed)
 		}
@@ -25,34 +37,24 @@ class Car{
 				temp = uniform(engine);
 			}
 			velocity -=1;
-			//return velocity;
-			//if we put the other functions here
-			
-			
+			return velocity;
+		}	
+		float increase_velocity(float velocity){
+        		return std:min(velocity + 1, MAX);
+		}		
 
+		float no_accidents(float velocity, float distance){
+       			 return std::min(velocity, distance - 1);
 
 		}	
-	
+
+		float circular_move(float velocity){
+
+		}	
 
 	private:
 	  std::uniform_int_distribution<int> uniform;
 	  std::mt19937 engine;
-}
-
-
-
-
-float increase_velocity(float velocity){
-	return std:min(velocity + 1, MAX);	
-}
-
-float no_accidents(float velocity, float distance){
-	return std::min(velocity, distance - 1);	
-
-}
-
-float circular_move(float velocity){
-
 }
 
 
