@@ -59,7 +59,7 @@ class Car{
                 return (temp >= probability) ? velocity - 1 : velocity;
 	   }
            float increase_velocity(float velocity){
-		 return std:min(velocity + 1, MAX);
+		 return std::min(velocity + 1, MAX);
            }
 
 	  float no_accidents(float velocity, float distance){
