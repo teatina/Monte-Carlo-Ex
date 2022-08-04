@@ -12,7 +12,7 @@ build:	functions.o
 
 ## functions.o:    compile functions.cpp into an object file.
 functions.o: functions.cpp funcions.h
-	${CXX} ${CXXFLAGS} -c -o $@ $<
+	${CXX} ${CXXFLAGS} -c -o $@ $^
 
 
 ## clean: Remove auto-generated files.
