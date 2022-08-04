@@ -8,10 +8,8 @@
 
 
 int main(){
-	int cars = 200;
-	int road_length = 1000;
-	float probability = 13;
-	
+	//Car(int numPos, int numSteps, int numCars, float Probability, double Seed)	
+	Car car(500, 200, 500, 0.2, 14);	
 
 
 
