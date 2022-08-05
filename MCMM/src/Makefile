@@ -1,17 +1,17 @@
 ## @file Makefile
 ## @author Tina Eghdam Zamiri
 ## @date Aug 03, 2022
-## @brief Makefile for compiling traffic model
+## @brief Makefile for compiling molecular model
 
 CXX = g++
 CXXFLAGS = -std=c++14
 
 ## build:       compile the code into an executable
-build:  functions.o
+build:  main.cpp functions.o
         ${CXX} ${CXXFLAGS} -o $@ $^
 
 ## functions.o:    compile functions.cpp into an object file.
-functions.o: functions.cpp funcions.h
+functions.o: functions.cpp functions.h
         ${CXX} ${CXXFLAGS} -c -o $@ $<
 
 
