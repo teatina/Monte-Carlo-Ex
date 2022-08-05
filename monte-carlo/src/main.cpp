@@ -4,15 +4,14 @@
 /// @brief Module for executing the 1D Nagel-Schreckenberg traffic flow.
 
 
-#include "functions.h"
+#include "functions.cpp"
 
 
 int main(){
 	//Car(int numPos, int numSteps, int numCars, float Probability, double Seed)	
 	Car car(500, 200, 500, 0.2, 14);	
 
-
-
+	car.run();
 
 
 

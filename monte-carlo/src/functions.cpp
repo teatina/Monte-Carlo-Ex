@@ -5,7 +5,7 @@
 
 
 
-#include "functions.cpp"
+#include "functions.h"
 	
 
 
@@ -25,18 +25,25 @@ class Car{
 			probability = Probability;
 			seed = Seed;	
 			velocity = new float[numCars];
-			positions = new float[numPos];
+			position = new float[numPos];
 		}
 
 		void start(int seed){
-			engine.seed(seed)
+			engine.seed(seed);
+			for( int i = 0; i < num_cars; i++ ){
+				velocity[i] = 1;
+			}
+			for ( int i = 0; i < num_pos; i++ ){
+				position[i] = i;
+			}
 		}
 
 		void run(){
+			start(seed);
 			for( int i = 0; i < num_steps; i++ ){
 				for ( int j = 0; j < num_cars; j++ ){
 					velocity[j] = increase_velocity(velocity[j]);
-					float distance = j != (num_cars - 1) ? podition[j+1] - position[j] : 0; 
+					float distance = j != (num_cars - 1) ? position[j+1] - position[j] : 0; 
 					velocity[j] = no_accidents(velocity[j], distance);
 					velocity[j] = random_decrease(velocity[j], probability);
 					position[j] = circular_move(velocity[j], position[j]);
@@ -52,29 +59,28 @@ class Car{
 	  std::uniform_int_distribution<int> uniform;
 	  std::mt19937 engine;
 	  float random_decrease(float velocity, float probability){
-          	if (velocity =< 0) return velocity;
-                // generate a random number to move
+          	if (velocity < 1){
+			 return velocity;
+                }
+		// generate a random number to move
                 int temp = uniform(engine);
                 // rejection scheme
                 return (temp >= probability) ? velocity - 1 : velocity;
 	   }
-           float increase_velocity(float velocity){
-		 return std::min(velocity + 1, MAX);
-           }
+	float increase_velocity(float velocity){
+		 return std::min(velocity + 1, velocity);
+	}
 
-	  float no_accidents(float velocity, float distance){
+ 	float no_accidents(float velocity, float distance){
 		 return std::min(velocity, distance - 1);
-	  }
+	}
 
-          float circular_move(float velocity, float position){
-          	return std::min(velocity + position, position);
-	  }
-
-
-
-}
+	float circular_move(float velocity, float position){
+		return std::min(velocity + position, position);
+	}
 
 
 
 
 
+};

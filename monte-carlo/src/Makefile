@@ -7,12 +7,12 @@ CXX = g++
 CXXFLAGS = -std=c++14
 
 ## build:	compile the code into an executable
-build:	functions.o
-	${CXX} ${CXXFLAGS} -o $@ $^
+build:	main.cpp functions.o 
+	${CXX} ${CXXFLAGS} -o $@ $<
 
 ## functions.o:    compile functions.cpp into an object file.
-functions.o: functions.cpp funcions.h
-	${CXX} ${CXXFLAGS} -c -o $@ $^
+functions.o: functions.cpp functions.h
+	${CXX} ${CXXFLAGS} -c -o $@ $<
 
 
 ## clean: Remove auto-generated files.
