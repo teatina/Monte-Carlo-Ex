@@ -16,15 +16,25 @@
 using namespace std;
 
 
-#define MAX 5
+class Car{
+	int num_pos;
+        int num_steps;
+        int num_cars;
+        float probability;
+        double seed;
+        float *velocity;
+        float *position;
+        public:
+		Car(int numPos, int numSteps, int numCars, float Probability, double Seed);
+		void start(int seed);
+		void run();
+	private:
+		float increase_velocity(float velocity);
+		float no_accidents(float velocity, float distance);
+		float random_decrease(float velocity, float probability);
+		float circular_move(float velocity, float position);
 
-float increase_velocity(float velocity);
-float no_accidents(float velocity, float distance);
-float random_decrease(float velocity, float probability);
-float circular_move(float velocity, float position);
-void run();
-
-
+};
 
 
 #endif
