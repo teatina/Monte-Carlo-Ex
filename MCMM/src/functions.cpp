@@ -15,8 +15,10 @@ void initialization(){
 }
 
 int generate_position(){
-	std::uniform_int_distribution<int> uniform(1, 6);
-	return uniform(engine);
+	std::random_device rd;
+        std::mt19937 engine(rd());
+	std::cauchy_distribution<double> distribution(5.0,1.0);
+	return distribution(engine);
 }
 
 double system_energy_initialization(int *molecules_x, int *molecules_y, int count){

@@ -8,18 +8,18 @@ CXXFLAGS = -std=c++14
 
 ## build:       compile the code into an executable
 build:  main.cpp functions.o
-        ${CXX} ${CXXFLAGS} -o $@ $^
+	${CXX} ${CXXFLAGS} -o $@ $^
 
 ## functions.o:    compile functions.cpp into an object file.
 functions.o: functions.cpp functions.h
-        ${CXX} ${CXXFLAGS} -c -o $@ $<
+	${CXX} ${CXXFLAGS} -c -o $@ $<
 
 
 ## clean: Remove auto-generated files.
 .PHONY: clean
 clean:
-        rm *.o
+	rm *.o
 
 PHONY: help
 help:   Makefile
-        @sed -n 's/^##//p' $<
+	@sed -n 's/^##//p' $<

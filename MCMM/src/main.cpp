@@ -28,7 +28,7 @@ int main(){
 
 	for ( int j = 1; j < num_steps; j++){
 		energy[j] = total_energy(molecule_x, molecule_y, molecule_count, energy[j-1], temperature);
-		cout << "Energy of the system at step" << j << "is: " << energy[j];
+		cout << "Energy of the system at step " << j << " is: " << energy[j] << endl;
 	}
 	
 
