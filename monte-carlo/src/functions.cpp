@@ -9,23 +9,23 @@
 	
 
 
-Car::Car(int numPos, int numSteps, int numCars, float Probability, double Seed){
+Car::Car(int numPos, int numSteps, int numCars, float Probability,float maxSpeed, double Seed){
 	num_pos = numPos;
 	num_steps = numSteps;
 	num_cars = numCars;
 	probability = Probability;
-	seed = Seed;	
+	max_speed = maxSpeed;
+	seed = Seed;
 	velocity = new float[numCars];
 	position = new float[numPos];
 }
 
 void Car::start(int seed){
-        std::normal_distribution<double> distribution(5.0,2.0);
+	std::cauchy_distribution<double> distribution(5.0,1.0);
 	std::mt19937 engine;
 	engine.seed(seed);
 	for( int i = 0; i < num_cars; i++ ){
 		velocity[i] = 1;
-		std::cout << i << " " <<  velocity[i] << endl;
 	}
 	for ( int i = 0; i < num_pos; i++ ){
 		position[i] = i;
@@ -35,11 +35,9 @@ void Car::start(int seed){
 
 void Car::run(){
 	start(seed);
-	cout << "before \n";
 	for( int i = 0; i < num_steps; i++ ){
-		cout << "ff\n"; 
 		for ( int j = 0; j < num_cars; j++ ){
-			velocity[j] = increase_velocity(velocity[j]);
+			velocity[j] = increase_velocity(velocity[j], max_speed);
 			float distance = (j != (num_cars - 1)) ? position[j+1] - position[j] : 0; 
 			velocity[j] = no_accidents(velocity[j], distance);
 			velocity[j] = random_decrease(velocity[j], probability);
@@ -55,7 +53,7 @@ void Car::run(){
 //}
 
 float Car::random_decrease(float velocity, float probability){
-        std::normal_distribution<double> distribution(5.0,2.0);
+	std::cauchy_distribution<double> distribution(5.0,1.0);
 	std::mt19937 engine;
         engine.seed(seed);
 	if (velocity <= 0){
@@ -64,17 +62,17 @@ float Car::random_decrease(float velocity, float probability){
 	// generate a random number to move
         double temp = distribution(engine);
         // rejection scheme
-	std::cout << temp;
+	std::cout << "random number: "  <<temp;
         return (temp >= probability) ? velocity - 1 : velocity;
 }
 
-float Car::increase_velocity(float velocity){
-	cout << velocity;
-	 return std::min(velocity + 1, float(10));
+float Car::increase_velocity(float velocity, float max_speed){
+	 return std::min(velocity + 1, max_speed);
 }
 
 float Car::no_accidents(float velocity, float distance){
-	 return std::min(velocity, distance - 1);
+	float max_dist = std::max(distance - 1, float(0));
+	return std::min(velocity, max_dist);
 }
 
 float Car::circular_move(float velocity, float position){

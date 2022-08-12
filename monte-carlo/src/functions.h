@@ -22,14 +22,15 @@ class Car{
         int num_cars;
         float probability;
         double seed;
+	float max_speed;
         float *velocity;
         float *position;
         public:
-		Car(int numPos, int numSteps, int numCars, float Probability, double Seed);
+		Car(int numPos, int numSteps, int numCars, float Probability, float maxSpeed, double Seed);
 		void start(int seed);
 		void run();
 	private:
-		float increase_velocity(float velocity);
+		float increase_velocity(float velocity, float max_speed);
 		float no_accidents(float velocity, float distance);
 		float random_decrease(float velocity, float probability);
 		float circular_move(float velocity, float position);

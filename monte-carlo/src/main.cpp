@@ -9,7 +9,7 @@
 
 int main(){
 	//Car(int numPos, int numSteps, int numCars, float Probability, double Seed)	
-	Car car(3, 5, 3, 0.5, 555);	
+	Car car(3, 5, 3, 0.2, 10, 555);	
 
 	car.run();
 
